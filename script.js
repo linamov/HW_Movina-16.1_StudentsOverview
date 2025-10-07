@@ -2,19 +2,18 @@ function Student(firstName, lastName, birthYear, grades) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.birthYear = birthYear;
-    this.grades = grades; 
-    this.attendance = new Array(25).fill(null); 
+    this.grades = grades;
+    this.attendance = new Array(25).fill(null); // 25 елементів
+
     // Метод: отримати вік
     this.getAge = function() {
-        const currentYear = new Date().getFullYear();
-        return currentYear - this.birthYear;
+        return new Date().getFullYear() - this.birthYear;
     }
 
     // Метод: середній бал
     this.getAverageGrade = function() {
         if (this.grades.length === 0) return 0;
-        const sum = this.grades.reduce((a, b) => a + b, 0);
-        return sum / this.grades.length;
+        return this.grades.reduce((a, b) => a + b, 0) / this.grades.length;
     }
 
     // Метод: відмітка присутності
@@ -33,11 +32,12 @@ function Student(firstName, lastName, birthYear, grades) {
     this.summary = function() {
         const avgGrade = this.getAverageGrade();
         const attendedCount = this.attendance.filter(a => a === true).length;
-        const attendanceRate = attendedCount / this.attendance.length;
+        const filledCount = this.attendance.filter(a => a !== null).length;
+        const attendanceRate = filledCount === 0 ? 0 : attendedCount / filledCount;
 
-        if (avgGrade > 90 && attendanceRate > 0.9) {
+        if (avgGrade >= 90 && attendanceRate >= 0.9) {
             return "Молодець!";
-        } else if (avgGrade > 90 || attendanceRate > 0.9) {
+        } else if (avgGrade >= 90 || attendanceRate >= 0.9) {
             return "Добре, але можна краще";
         } else {
             return "Редиска!";
@@ -45,8 +45,8 @@ function Student(firstName, lastName, birthYear, grades) {
     }
 }
 
-// Приклади використання
-const student1 = new Student('Ivan', 'Kvit', 2000, [95, 86, 92]);
+// Приклади
+const student1 = new Student('Ivan', 'Kvit', 2000, [95, 88, 92]);
 const student2 = new Student('Olena', 'Petrova', 1999, [80, 85, 78]);
 const student3 = new Student('Mykola', 'Sadoviy', 2001, [91, 93, 95]);
 
