@@ -3,7 +3,7 @@ function Student(firstName, lastName, birthYear, grades) {
     this.lastName = lastName;
     this.birthYear = birthYear;
     this.grades = grades;
-    this.attendance = new Array(25).fill(null); // 25 елементів
+    this.attendance = new Array(25).fill(null); 
 
     // Метод: отримати вік
     this.getAge = function() {
@@ -46,7 +46,7 @@ function Student(firstName, lastName, birthYear, grades) {
 }
 
 // Приклади
-const student1 = new Student('Ivan', 'Kvit', 2000, [95, 88, 92]);
+const student1 = new Student('Ivan', 'Kvit', 2000, [95, 89, 92]);
 const student2 = new Student('Olena', 'Petrova', 1999, [80, 85, 78]);
 const student3 = new Student('Mykola', 'Sadoviy', 2001, [91, 93, 95]);
 
